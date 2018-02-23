@@ -421,9 +421,9 @@ class Curve(np.ndarray):
             Curve. The current instance in the new basis.
         """
         if basis is None:
-            new_start = start or self.start
-            new_step = step or self.step
-            new_stop = stop or self.stop
+            new_start = start if start is not None else self.start
+            new_step = step if step is not None else self.step
+            new_stop = stop if stop is not None else self.stop
             new_adj_stop = new_stop + new_step/100  # To guarantee inclusion.
             basis = np.arange(new_start, new_adj_stop, new_step)
         else:

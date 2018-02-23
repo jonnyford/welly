@@ -48,6 +48,10 @@ def test_basis():
     y = gr.to_basis_like(x)
     assert y.size == 101
     assert y[0] - 66.6059 < 0.001
+    
+    z = gr.to_basis(start=0, stop=100, step=1)
+    assert z.size == 101
+    assert np.isnan(z[0])
 
 
 def test_read():
